@@ -1,0 +1,29 @@
+@import "../../common/color";
+.header {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-area: header;
+  font-family: 'Brygada 1918', serif;
+  h1{
+    position: absolute;
+    font-family: 'Brygada 1918', serif;
+    margin: auto;
+    top: 6px;
+    left: 500px;
+    color:$secondary-color;
+
+  }
+
+}
+.inputSearch{
+  width: 600px;
+  position: relative;
+  margin: auto;
+  top: 40px;
+  z-index: 2;
+  background-color: #FFFFFF;
+
+}
+
+

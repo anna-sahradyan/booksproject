@@ -1,0 +1,19 @@
+@import "../../common/color";
+
+.footer {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-area: footer;
+  background-color: $font-primary;
+  overflow: hidden;
+  min-height: auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+.bookDiv{
+  margin: auto;
+}
+.footer span{
+  margin: auto;
+}
