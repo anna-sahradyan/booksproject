@@ -1,36 +1,28 @@
 import React, {useEffect} from 'react';
-import s from './BookDetails.module.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAsyncAllBooksDetails, selectAllBooksDetails} from "../../store/detailsSlice";
-import {useParams} from "react-router-dom";
-import BookCard from "../BookCard";
-import BooksPage from "../BooksPage";
+import {fetchAsyncAllBooks, selectAllBooks} from "../../store/allBooksSlice";
+import s from './AllBooksList.module.scss';
+import BookCard from "../../components/BookCard";
 
 
-const BookDetails = () => {
-    let {booksId} = useParams();
-    let dispatch = useDispatch();
-    const allBooks = useSelector(selectAllBooksDetails);
-    let books=allBooks.items;
+const AllBooksList = () => {
+    const dispatch = useDispatch();
+    const allBooks = useSelector(selectAllBooks);
+    const books = allBooks.items;
+
 
     useEffect(() => {
-        dispatch(fetchAsyncAllBooksDetails(booksId))
-    }, [dispatch, booksId])
-    useEffect(() => {
-        return () => {
-            if (booksId && booksId !== ''){
-                fetchAsyncAllBooksDetails(booksId);
-            }
+        dispatch(fetchAsyncAllBooks());
 
-        }
-    }, [])
+    }, [dispatch])
+
     return (
         <>
-            <div className={s.contentPage}>
-                <div className={s.containerPage}>
-
+            <div className={s.contentDiv}>
+                <div className={s.content}>
+                    <div className={s.cardList}>
                         {allBooks.kind === 'books#volumes' ? (books.map((item, index) => {
-                            return <BooksPage key={`${item}_${index}`} title={item.volumeInfo['title']}
+                            return <BookCard key={`${item}_${index}`} title={item.volumeInfo['title']}
                                              booksId={item.id}
                                              img={item.volumeInfo.imageLinks['thumbnail']}
                                              authors={item.volumeInfo['authors']}
@@ -42,12 +34,12 @@ const BookDetails = () => {
 
 
                     </div>
-
-
+                </div>
             </div>
+
 
         </>
     );
 };
 
-export default BookDetails;
+export default AllBooksList;

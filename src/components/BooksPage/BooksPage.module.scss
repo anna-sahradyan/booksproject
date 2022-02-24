@@ -1,4 +1,3 @@
-@import "../../common/color";
 .contentPage {
   position: relative;
   top: 10px;
@@ -6,6 +5,7 @@
   height: 100%;
   z-index: 1;
   font-style: italic;
+  border:1px solid #FFFFFF;
 }
 
 .containerPage {
@@ -14,11 +14,5 @@
   margin: auto;
   height: auto;
 
-
-}
-.partImage{
-
-}
-.blockImgDes{
 
 }

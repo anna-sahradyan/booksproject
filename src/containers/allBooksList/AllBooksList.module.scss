@@ -1,4 +1,4 @@
-@import "../common/color";
+@import "../../common/color";
 .contentDiv {
   position: relative;
   width: 100%;
@@ -33,6 +33,17 @@
     margin-left: 5px;
     font-family:Arial sans-serif;
   }
+  h4 {
+    color: $font-secondary;
+    margin-left: 5px;
+    font-family:Arial sans-serif;
+  }
+  h3{
+    color: $font-secondary;
+    margin-left: 5px;
+    font-family:Arial sans-serif;
+  }
+
 
 
 }
@@ -55,6 +66,7 @@
 
   h6 {
     margin-left: 5px;
+    color: $font-secondary;
   }
 }
 

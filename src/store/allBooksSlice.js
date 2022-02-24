@@ -13,7 +13,7 @@ export const fetchAsyncAllBooks = createAsyncThunk("allBooks/fetchAsyncAllBooks"
 const allBooksSlice = createSlice({
     name: "allBooks",
     initialState: {
-        allBooks: {},
+        allBooks: [],
     },
     reducers: {
         getAllBooks: (state, {payload}) => {
