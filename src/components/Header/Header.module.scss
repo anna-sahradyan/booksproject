@@ -1,22 +1,26 @@
 @import "../../common/color";
+
 .header {
   width: 100%;
   position: relative;
   display: grid;
   grid-area: header;
   font-family: 'Brygada 1918', serif;
-  h1{
+
+  h1 {
     position: absolute;
     font-family: 'Brygada 1918', serif;
     margin: auto;
     top: 6px;
     left: 500px;
-    color:$secondary-color;
+    color: $secondary-color;
 
   }
 
 }
-.inputSearch{
+
+//block searchinput
+.inputSearch {
   width: 600px;
   position: relative;
   margin: auto;
@@ -24,6 +28,32 @@
   z-index: 2;
   background-color: #FFFFFF;
 
+  input {
+    width: 600px;
+    height: 55px;
+  }
 }
 
+//block sortBy
+.sortPart {
+  width: 300px;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+}
+
+.sort {
+  background: #FFFFFF;
+
+}
+//block category
+.category{
+  width: 300px;
+  position: absolute;
+  top: 20px;
+  left: 1010px;
+}
+.categoryList{
+  background: #FFFFFF;
+}
 

@@ -1,16 +1,28 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
-    name: "searchTitle",
+    name: "inputValue",
     initialState: {
-        searchTitle: []
+        inputValue:[]
     },
+    pending: null,
+    error: false,
     reducers: {
-        getSearchTitle: (state, {payload}) => {
-            state.searchTitle = payload;
-        }
+        getInputValue: (state, action) => {
+            state.inputValue = action.payload;
+        },
+        getInputValueSuccess: (state, {payload}) => {
+            state.inputValue = payload;
+            state.pending= false;
+            state.errors = false;
+        },
+        getInputValueFailure: state => {
+            state.pending = false;
+            state.errors = true;
+        },
+
     },
 });
-export const {getSearchTitle} = searchSlice.actions;
-export const selectSearchTitle = state => state.searchTitle.searchTitle;
+export const {getInputValue, getInputValueFailure,getInputValueSuccess} = searchSlice.actions;
+export const selectInputValue = state => state.inputValue.inputValue;
 export default searchSlice.reducer;

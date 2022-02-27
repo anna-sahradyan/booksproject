@@ -6,7 +6,7 @@ import BookDetails from "../components/BookDetails";
 const Main = () => {
     return (
         <>
-            {/*<AllBooksList/>*/}
+           {/*<AllBooksList/>*/}
             <PaginationList/>
             {/*<BookDetails/>*/}
         </>
