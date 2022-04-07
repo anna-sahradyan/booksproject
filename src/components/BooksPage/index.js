@@ -1,9 +1,15 @@
 import React from 'react';
+import s from "../BookDetails/BookDetails.module.scss";
 
-const BooksPage = () => {
+
+const BooksPage = (props) => {
     return (
         <>
-            
+            <div className={s.partCard}>
+
+            </div>
+
+
         </>
     );
 };

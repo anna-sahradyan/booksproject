@@ -5,19 +5,23 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAsyncAllBooks, selectAllBooks} from "../../store/allBooksSlice";
+import {useLocation} from "react-router-dom";
 
 const PaginationList = () => {
-    const [items, setItems] = useState([]);
     const [visible, setVisible] = useState(10);
     const dispatch = useDispatch();
     let allBooks = useSelector(selectAllBooks);
     let books = allBooks.items;
-    console.log(books);
+    const location = useLocation();
     const showMoreItem = () => {
-        setVisible((prevValue)=>prevValue+5);
+        if (visible > 20) {
+            return location.pathname('/p')
+        }
+        setVisible((prevValue) => prevValue + 5);
     }
+    let text = 'react'
     useEffect(() => {
-        dispatch(fetchAsyncAllBooks());
+        dispatch(fetchAsyncAllBooks(text));
     }, [dispatch]);
     return (<>
         <div className={s.contentDiv}>

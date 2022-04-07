@@ -6,7 +6,7 @@ const BookCard = (props) => {
     return (
         <>
             <motion.div className={s.card} whileHover={{scale: 1.03}}>
-                <Link to={`/books/:${props.booksId}`}>
+                <Link to={`/books/${props.booksId}`}>
                     <img src={props.img} alt=""/>
                     <h3>{props.title}</h3>
                     <h4>{props.authors}</h4>

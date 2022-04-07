@@ -1,12 +1,9 @@
 import {combineReducers} from "redux";
 import allBooks from '../store/allBooksSlice';
-import inputValue from '../store/searchSlice';
-import details from '../store/detailsSlice';
-
+import oneBook from '../store/detailSlice';
 const rootReducer = combineReducers({
     allBooks,
-    inputValue,
-    details,
+    oneBook,
     devTools: true,
 })
 export default rootReducer;
