@@ -25,21 +25,23 @@
   margin: auto;
   position: relative;
   transition: all ease 1.5s;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  grid-row-gap: 10px;
+  //display: grid;
+  //grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  //grid-row-gap: 10px;
   z-index: 9999;
   max-height: 100%;
 
 
 }
-.partCard{
 
-}
-.partImage{
-
-}
 .blockImgDes{
+
+
+}
+.partCard{
+  background-color: #0f172b;
+  opacity: 0.5;
+  filter: alpha(opacity=70);
   width: 100%;
   border: 1px solid white;
   height: 100%;
