@@ -6,6 +6,9 @@ import Button from '@mui/material/Button';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAsyncAllBooks, selectAllBooks} from "../../store/allBooksSlice";
 import {useLocation} from "react-router-dom";
+import Loading from "../../components/Loading";
+
+
 
 const PaginationList = () => {
     const [visible, setVisible] = useState(10);
@@ -14,8 +17,9 @@ const PaginationList = () => {
     let books = allBooks.items;
     const location = useLocation();
     const showMoreItem = () => {
-        if (visible > 20) {
-            return location.pathname('/p')
+        if (visible >=25) {
+            setVisible((prevValue) => prevValue - 5);
+            return
         }
         setVisible((prevValue) => prevValue + 5);
     }
@@ -27,21 +31,25 @@ const PaginationList = () => {
         <div className={s.contentDiv}>
             <div className={s.content}>
                 <div className={s.cardList}>
-                    {allBooks.kind === 'books#volumes' ? (books.slice(0, visible).map((item, index) => {
+                    {allBooks.kind !== 'books#volumes' ?(<Loading/>): (books.slice(0, visible).map((item, index) => {
                         return <BookCard key={`${item}_${index}`} title={item.volumeInfo['title']}
                                          booksId={item.id}
                                          img={item.volumeInfo.imageLinks['thumbnail']}
                                          authors={item.volumeInfo['authors']}
-                                         description={item.volumeInfo['description']}
                                          categories={item.volumeInfo['categories']}
                                          language={item.volumeInfo['language']}
-                                         publishedDate={item.volumeInfo['publishedDate']}/>
-                    })) : (<div><h1>{allBooks.Error}</h1></div>)}
+                                         publishedDate={item.volumeInfo['publishedDate']}
+                                         publisher={item.volumeInfo['publisher']}
+                                         subtitle={item.volumeInfo['subtitle']}
+                                         pageCount={item.volumeInfo['pageCount']}
+
+                        />
+                    }))}
 
                 </div>
                 <div className={s.btn}>
-                    <Stack direction="row" spacing={2} className={s.btn}>
-                        <Button variant="contained" color="success" onClick={showMoreItem}>
+                    <Stack direction="row"  className={s.btn} >
+                        <Button variant="contained" color="success" onClick={showMoreItem} style={{width:'1200px'}}>
                             Load More
                         </Button>
                     </Stack>

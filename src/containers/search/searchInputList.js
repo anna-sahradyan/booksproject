@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {fetchAsyncAllBooks} from "../../store/allBooksSlice";
+import {NavLink} from "react-router-dom";
 
 const SearchInputList = () => {
     const [inputValue, setInputValue] = useState('');
@@ -17,8 +18,7 @@ const SearchInputList = () => {
     }
     return (<>
         <div>
-
-            <h1>SEARCH FOR BOOKS</h1>
+            <NavLink to ='/'><h1>SEARCH FOR BOOKS</h1></NavLink>
             <form>
                 <Box
                     sx={{

@@ -3,15 +3,15 @@ import s from '../../components/Header/Header.module.scss';
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {fetchAsyncAllBooks} from "../../store/allBooksSlice";
-//import {selectCategory, setCategory} from "../../store/categorySlice";
+import {useLocation} from "react-router-dom";
 
 const SearchCategoryList = () => {
     const [inputValue, setInputValue] = useState('');
     const dispatch = useDispatch();
-
+    const location = useLocation();
     const handleChange = (e) => {
         e.preventDefault();
-        dispatch(fetchAsyncAllBooks(inputValue));
+            dispatch(fetchAsyncAllBooks(inputValue));
 
     }
 

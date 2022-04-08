@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-export const fetchAsyncAllBooksId= createAsyncThunk('oneBook/fetchAsyncAllBooksId', async function (id, {rejectWithValue}) {
+export const fetchAsyncAllBooksId = createAsyncThunk('oneBook/fetchAsyncAllBooksId', async function (id, {rejectWithValue}) {
     try {
-        const response = await fetch(` https://www.googleapis.com/books/v1/volumes?q=${id}&key=AIzaSyCEjuT4DYQ4KVHfoA68ulwR_hX4yJHYg8I`);
+        const response = await fetch(` https://www.googleapis.com/books/v1/volumes/${id}?key=AIzaSyCEjuT4DYQ4KVHfoA68ulwR_hX4yJHYg8I`);
         if (!response.ok) {
             throw new Error('Server Error!');
         }
@@ -22,21 +22,23 @@ const setError = (state, action) => {
 const detailSlice = createSlice({
     name: "oneBook",
     initialState: {
-        oneBook: [],
+        oneBook: {},
         status: null,
         error: null,
     },
     reducers: {
-
+        removeList: (state) => {
+            state.oneBook = [];
+        }
     },
     extraReducers: {
         [fetchAsyncAllBooksId.pending]: (state) => {
             state.status = 'loading'
         },
-        [fetchAsyncAllBooksId.fulfilled]: (state, action) => {
+        [fetchAsyncAllBooksId.fulfilled]: (state,action) => {
             state.status = 'resolved';
             state.oneBook = action.payload;
-            //return {...state, oneBook: payload};
+           // {...state, oneBook: payload};
 
 
         },
@@ -45,6 +47,6 @@ const detailSlice = createSlice({
     },
 
 });
-
-export const selectOneBook = state =>state.oneBook.oneBook;
+export const {removeList} = detailSlice.actions;
+export const selectOneBook = state => state.oneBook.oneBook;
 export default detailSlice.reducer;
