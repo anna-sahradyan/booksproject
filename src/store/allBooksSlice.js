@@ -1,8 +1,9 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {API_KEY} from "../data";
 
 export const fetchAsyncAllBooks = createAsyncThunk('allBooks/fetchAsyncAllBooks', async function (inputValue, {rejectWithValue}) {
     try {
-        const response = await fetch(` https://www.googleapis.com/books/v1/volumes?q=${inputValue}&key=AIzaSyCEjuT4DYQ4KVHfoA68ulwR_hX4yJHYg8I&maxResults=40`);
+        const response = await fetch(` https://www.googleapis.com/books/v1/volumes?q=${inputValue}&key${API_KEY}&maxResults=40`);
         if (!response.ok) {
             throw new Error('Server Error!');
         }

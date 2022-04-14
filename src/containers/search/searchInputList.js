@@ -12,7 +12,7 @@ const SearchInputList = () => {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 dispatch(fetchAsyncAllBooks(inputValue))
-                console.log('enter press')
+
             }
 
     }

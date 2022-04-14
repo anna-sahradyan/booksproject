@@ -5,7 +5,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {fetchAsyncAllBooks} from "../../store/allBooksSlice";
 
 const SearchSortList = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState('relevance');
     const dispatch = useDispatch();
     const handelClick = (e) => {
         e.preventDefault();

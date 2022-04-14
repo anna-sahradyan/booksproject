@@ -7,11 +7,11 @@ const BookCard = (props) => {
     return (
         <>
             <motion.div className={s.card} whileHover={{scale: 1.03}}>
-                <Link to={`/books/${props.booksId}`} className={s.cardItem}><img src={props.img} alt=""/>  </Link>
+                <Link to={`/books/${props.booksId}`} className={s.cardItem}><img src={props.img} alt={props.title}/>
                 <h3>{props.title}</h3>
                 <h4>{props.authors}</h4>
 
-
+                </Link>
             </motion.div>
         </>
     );

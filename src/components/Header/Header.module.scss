@@ -13,7 +13,7 @@
     margin: auto;
     top: 6px;
     left: 500px;
-    color: $secondary-color;
+    color: $font-secondary;
 
   }
 
@@ -21,16 +21,10 @@
 
 //block searchinput
 .inputSearch {
-  width: 600px;
-  position: relative;
-  margin: auto;
-  top: 60px;
-  z-index: 2;
-  background-color: #FFFFFF;
-
+  margin-top: -5px;
   input {
     width: 600px;
-    height: 55px;
+
   }
 }
 

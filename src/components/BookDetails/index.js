@@ -6,36 +6,45 @@ import {fetchAsyncAllBooksId, removeList, selectOneBook} from "../../store/detai
 import Loading from '../Loading/index';
 import BooksPage from './BooksPage';
 
+
 const BookDetails = () => {
     let {booksId} = useParams();
     let dispatch = useDispatch();
     const allBooks = useSelector(selectOneBook);
-    let bookItem = Object.values(allBooks).map((item) => {
-        return item;
-    })
-    let books =  Object.values(bookItem).map((item) => {
-    return item;
-    })
-    console.log(books);
+    let books = {...allBooks.volumeInfo};
+    let images ={...books.imageLinks}
+        console.log(books.description)
     useEffect(() => {
-        dispatch(fetchAsyncAllBooksId(booksId));
+        if (booksId && booksId !== '') {
+            dispatch(fetchAsyncAllBooksId(booksId));
+        }
         return () => {
             dispatch(removeList());
         }
 
-    }, [dispatch])
+    }, [dispatch, booksId])
     return (<>
         <div className={s.contentPage}>
             <div className={s.containerPage}>
                 <div className={s.cardList}>
-                    { books.length===''?(<Loading/>):(books.map((item,index)=>
-                           <BooksPage title={item['title']}  key={`${item}_${index}`} />
+                    {books.length === '' ? (<Loading/>) : (<>
+                            <BooksPage title={books.title}
+                                       publisher={books.publisher}
+                                       authors={books.authors}
+                                       img={images['thumbnail']}
+                                       categories={books.categories}
+                                       language={books.language}
+                                       publishedDate={books.publishedDate}
+                                       pageCount={books.pageCount}
+                                       description={books.description}
 
-                    ))}
+                            />
+                        </>
+
+
+                    )}
                 </div>
             </div>
-
-
         </div>
 
     </>);

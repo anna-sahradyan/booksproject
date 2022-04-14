@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAsyncAllBooks, selectAllBooks} from "../../store/allBooksSlice";
-import {useLocation} from "react-router-dom";
 import Loading from "../../components/Loading";
 
 
@@ -15,7 +14,6 @@ const PaginationList = () => {
     const dispatch = useDispatch();
     let allBooks = useSelector(selectAllBooks);
     let books = allBooks.items;
-    const location = useLocation();
     const showMoreItem = () => {
         if (visible >=25) {
             setVisible((prevValue) => prevValue - 5);
@@ -32,16 +30,10 @@ const PaginationList = () => {
             <div className={s.content}>
                 <div className={s.cardList}>
                     {allBooks.kind !== 'books#volumes' ?(<Loading/>): (books.slice(0, visible).map((item, index) => {
-                        return <BookCard key={`${item}_${index}`} title={item.volumeInfo['title']}
+                        return <BookCard key={`${item}_${index}`}
+                                         title={item.volumeInfo['title']}
                                          booksId={item.id}
                                          img={item.volumeInfo.imageLinks['thumbnail']}
-                                         authors={item.volumeInfo['authors']}
-                                         categories={item.volumeInfo['categories']}
-                                         language={item.volumeInfo['language']}
-                                         publishedDate={item.volumeInfo['publishedDate']}
-                                         publisher={item.volumeInfo['publisher']}
-                                         subtitle={item.volumeInfo['subtitle']}
-                                         pageCount={item.volumeInfo['pageCount']}
 
                         />
                     }))}

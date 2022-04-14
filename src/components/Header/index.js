@@ -10,7 +10,9 @@ const Header = () => {
         <>
             <header>
                 <div className={s.header}>
+                    <div className={s.inputSearch}>
                     <SearchInputList/>
+                    </div>
                     <div className={s.sortPart}>
                         <SearchSortList/>
                     </div>
